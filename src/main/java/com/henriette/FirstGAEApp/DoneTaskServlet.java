@@ -1,8 +1,5 @@
 //Find out if this class is even needed when Enqueue exists
 package com.henriette.FirstGAEApp;
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 
 import java.io.IOException;
 

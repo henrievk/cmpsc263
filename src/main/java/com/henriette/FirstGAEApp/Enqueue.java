@@ -23,6 +23,7 @@ public class Enqueue extends HttpServlet {
      Queue queue = QueueFactory.getDefaultQueue();
      queue.add(withUrl("/worker").param("key", key).param("value", value));
 
-     response.sendRedirect("/test");
+     //response.sendRedirect("/test");
+     response.sendRedirect("/tqueue.jsp?key=" +key);
  }
 }

@@ -31,6 +31,33 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>task</servlet-name>
+        <servlet-class>com.henriette.FirstGAEApp.TaskServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>task</servlet-name>
+        <url-pattern>/task.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>blobstore</servlet-name>
+        <servlet-class>com.henriette.FirstGAEApp.BlobstoreServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>blobstore</servlet-name>
+        <url-pattern>/blobstore</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>serve</servlet-name>
+        <servlet-class>com.henriette.FirstGAEApp.Serve</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>serve</servlet-name>
+        <url-pattern>/serve</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>ReadData</servlet-name>
         <servlet-class>com.henriette.FirstGAEApp.ReadData</servlet-class>
     </servlet>
