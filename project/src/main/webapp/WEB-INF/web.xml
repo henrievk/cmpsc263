@@ -22,6 +22,15 @@
         <url-pattern>/about</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>hostSuppr</servlet-name>
+        <servlet-class>MyGAEApp.project.HostSupprServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hostSuppr</servlet-name>
+        <url-pattern>/hostSuppr</url-pattern>
+    </servlet-mapping>
+    
     <welcome-file-list>
         <welcome-file>guestbook.jsp</welcome-file>
     </welcome-file-list>

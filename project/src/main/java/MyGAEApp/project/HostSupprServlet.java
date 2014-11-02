@@ -1,6 +1,5 @@
 package MyGAEApp.project;
 import com.google.appengine.api.datastore.DatastoreService;
-
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
@@ -12,13 +11,14 @@ import com.google.appengine.api.users.UserServiceFactory;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class HostSupprServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
-		      throws IOException {
+		      throws IOException, ServletException {
 		    UserService userService = UserServiceFactory.getUserService();
 		    User user = userService.getCurrentUser();
 
@@ -34,7 +34,12 @@ public class HostSupprServlet extends HttpServlet{
 
 		    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		    datastore.put(suppr);
-
-		    resp.sendRedirect("/host.jsp?suppr=" + suppr);
 		  }//Shmell paa med formactions som i guestbook jsp
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException {
+		resp.setContentType("text/plain");
+	    resp.getWriter().println("Hello");
+		}
+
 }
