@@ -39,7 +39,7 @@ public class HostSupprServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		resp.setContentType("text/plain");
-	    resp.getWriter().println("Hello");
+		req.getRequestDispatcher("hostSuppr.jsp").forward(req, resp);
 		}
 
 }
