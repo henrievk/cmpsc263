@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>about</servlet-name>
-        <url-pattern>/about.html</url-pattern>
+        <url-pattern>/about</url-pattern>
     </servlet-mapping>
     
     <welcome-file-list>

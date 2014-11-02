@@ -19,7 +19,7 @@ Suppr
 </head>
 Enjoy a meal with new people; Share the fun as well as the costs!
 <body>
-<p>What is Suppr?  <a href="/about.html">Click for info</a> 
+<p>What is Suppr?  <a href="/about.jsp">Click for info</a> 
 <p>Log in to view shared meals in your area or host one yourself!
 <% UserService userService = UserServiceFactory.getUserService(); %>    
 <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log in</a>

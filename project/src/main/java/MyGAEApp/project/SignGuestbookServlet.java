@@ -52,5 +52,5 @@ public class SignGuestbookServlet extends HttpServlet {
     datastore.put(greeting);
 
     resp.sendRedirect("/guestbook.jsp?guestbookName=" + guestbookName);
-  }
+  }	
 }
