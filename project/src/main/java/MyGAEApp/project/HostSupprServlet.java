@@ -38,6 +38,7 @@ public class HostSupprServlet extends HttpServlet{
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
+		//add if not logged in, redirect to log in
 		resp.setContentType("text/plain");
 		req.getRequestDispatcher("hostSuppr.jsp").forward(req, resp);
 		}

@@ -20,9 +20,10 @@
 <body>   
 
 <form action="/hostSuppr" method="post">
-    <div><input type="text" name="title" value="Give your Suppr a title!"></div>
+    <p>Give your Suppr a title!</p>
+    <div><input type="text" name="title" ></div>
+     <p>Describe the event. This is a great place to state if there will be entertainment or a dresscode etc.</p>
     <div><textarea name="description" rows="5" cols="60">
-Add a description for your event. Maybe there will be a private concert or karaoke?
     </textarea></div>
     <div><input type="submit" value="Create Suppr"/></div>
     <input type="hidden" name="title" value="${fn:escapeXml(title)}"/>
