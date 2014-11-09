@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
 <%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
@@ -29,6 +30,27 @@
     <input type="hidden" name="title" value="${fn:escapeXml(title)}"/>
 </form>
 
+<style type="text/css">
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABrkH5dNF007zNwtf1Cmt4fU8l_eSQ6gw">
+    </script>
+    <script type="text/javascript">
+      var map;
+      function initialize(location) {
+      	var mapOptions = {
+  		center: new google.maps.LatLng(-34.397, 150.644),
+  		zoom: 8
+		};
+		map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+
+      }
+      $(document).ready(function(){
+		navigator.geolocation.getCurrentPosition(initialize);
+      });
+    </script>
+  </head>
+  <body>
+<div id="map-canvas"></div>
 
 </body>
 </html>
