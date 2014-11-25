@@ -34,7 +34,7 @@ public class HostSupprServlet extends HttpServlet{
 
 		    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		    datastore.put(suppr);
-		  }//Shmell paa med formactions som i guestbook jsp
+		  }
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {

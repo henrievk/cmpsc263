@@ -14,6 +14,7 @@
 
 <html>
 <head>
+	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
 Suppr
 
 </head>
@@ -23,7 +24,7 @@ Enjoy a meal with new people; Share the fun as well as the costs!
 <p>Log in to view shared meals in your area or host one yourself!
 <% UserService userService = UserServiceFactory.getUserService(); %>    
 <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log in</a>
-<p>Host a Suppr!  <a href="/hostSuppr">Click to create</a> 
+<p>Host a Suppr!  <a href="/hostSuppr">Click to create</a>
 </p>
 
 
