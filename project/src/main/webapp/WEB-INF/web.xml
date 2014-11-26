@@ -12,6 +12,15 @@
         <servlet-name>sign</servlet-name>
         <url-pattern>/sign</url-pattern>
     </servlet-mapping>
+   
+     <servlet>
+        <servlet-name>home</servlet-name>
+        <servlet-class>MyGAEApp.project.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>home</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>about</servlet-name>
@@ -32,6 +41,6 @@
     </servlet-mapping>
     
     <welcome-file-list>
-        <welcome-file>guestbook.jsp</welcome-file>
+        <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

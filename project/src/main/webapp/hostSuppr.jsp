@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
 <%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
@@ -15,7 +14,7 @@
 
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
 </head>
 
 <body>   
@@ -51,7 +50,7 @@
   </head>
   <body>
 <div id="map-canvas"></div>
-
+<a href="/guestbook.jsp">Back</a> 
 </body>
 </html>
 

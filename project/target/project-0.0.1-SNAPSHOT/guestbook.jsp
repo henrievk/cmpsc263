@@ -14,7 +14,7 @@
 
 <html>
 <head>
-	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
 Suppr
 
 </head>
