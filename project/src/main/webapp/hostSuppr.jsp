@@ -19,6 +19,35 @@
 
 <body>   
 
+<%
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    //add supprkey?
+    Query query = new Query("Suppr").addSort("date", Query.SortDirection.DESCENDING);
+    List<Entity> supprs = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(5));
+    if (supprs.isEmpty()) {
+%>
+
+<p>There are no Supprs to show right now.</p>
+
+<%
+} else {
+%>
+
+<p>Current Supprs:</p>
+
+<%
+    for (Entity suppr : supprs) {
+%>
+<p><b>suppr</p>
+<%
+        }
+    }
+%>
+
+
+
 <form action="/hostSuppr" method="post">
     <p>Give your Suppr a title!</p>
     <div><input type="text" name="title" ></div>
@@ -28,29 +57,7 @@
     <div><input type="submit" value="Create Suppr"/></div>
     <input type="hidden" name="title" value="${fn:escapeXml(title)}"/>
 </form>
-
-<style type="text/css">
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABrkH5dNF007zNwtf1Cmt4fU8l_eSQ6gw">
-    </script>
-    <script type="text/javascript">
-      var map;
-      function initialize(location) {
-      	var mapOptions = {
-  		center: new google.maps.LatLng(-34.397, 150.644),
-  		zoom: 8
-		};
-		map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
-
-      }
-      $(document).ready(function(){
-		navigator.geolocation.getCurrentPosition(initialize);
-      });
-    </script>
-  </head>
-  <body>
-<div id="map-canvas"></div>
-<a href="/guestbook.jsp">Back</a> 
+<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log out</a>
 </body>
 </html>
 

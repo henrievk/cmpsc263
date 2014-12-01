@@ -25,22 +25,25 @@ public class HostSupprServlet extends HttpServlet{
 		    String title = req.getParameter("title");
 		    Key supprkey = KeyFactory.createKey("Suppr", title);
 		    String description = req.getParameter("description");
-		    Date date = new Date();
+		    Date createdAt = new Date();
 		    Entity suppr = new Entity("Suppr", supprkey);
 		    suppr.setProperty("user", user);
 		    suppr.setProperty("title", title);
 		    suppr.setProperty("description", description);
-		    suppr.setProperty("date", date);
+		    suppr.setProperty("createdAt", createdAt);
 
 		    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		    datastore.put(suppr);
+		    System.out.println("Suppr is PUUUUUUUUUUUT"+ suppr.getProperty("title"));
+		    resp.sendRedirect("/hostSuppr");
+
 		  }
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
-		//add if not logged in, redirect to log in
 		resp.setContentType("text/plain");
 		req.getRequestDispatcher("hostSuppr.jsp").forward(req, resp);
 		}
 
+	
 }

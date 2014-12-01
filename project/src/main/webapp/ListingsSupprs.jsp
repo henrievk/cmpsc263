@@ -12,35 +12,40 @@
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@ page language="java" contentType="text/html;charset=UTF-8" %>
-
 <html>
-
 <head>
-	<title>Suppr</title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
 </head>
 
-<body>
+<body>   
 
-	<%
-		UserService userService = UserServiceFactory.getUserService();
-	User currentUser = userService.getCurrentUser();
-	if (currentUser != null) {
-	%>
-		<p>Host a Suppr!  <a href="/hostSuppr">Click to create</a> 
-		<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log out</a>
+<%
+    UserService userService = UserServiceFactory.getUserService();
+    User user = userService.getCurrentUser();
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    //TODO: add sort?
+    Query query = new Query("Suppr");
+    List<Entity> supprs = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(30));
+    if (supprs.isEmpty()) {
+%>
 
-	<%
-		} 
-		else {
-	%>
-		Enjoy a meal with new people; Share the fun as well as the costs!
-		<p>What is Suppr?  <a href="/about.jsp">Click for info</a> 
-		<p>Log in to view shared meals in your area or host one yourself!    
-		<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log in</a>
-	<%
-		}
-	%>
+<p>There are no Supprs to show right now.</p>
 
+<%
+} else {
+%>
+
+<p>Current Supprs:</p>
+
+<%
+    for (Entity suppr : supprs) {
+        //String name=suppr.getProperty("title");
+        pageContext.setAttribute("name", suppr.getProperty("title"));
+%>
+<p>'${fn:escapeXml(name)}'</p>
+<%
+        }
+    }
+%>
 </body>
 </html>
