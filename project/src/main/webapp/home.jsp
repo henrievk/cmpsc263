@@ -17,6 +17,7 @@
 <html>
 
 <head>
+	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css"/>
 	<title>Suppr</title>
 </head>
 
@@ -27,17 +28,39 @@
 	User currentUser = userService.getCurrentUser();
 	if (currentUser != null) {
 	%>
-		<p>Host a Suppr!  <a href="/hostSuppr">Click to create</a> 
+	<div class="container">
+		<div class="jumbotron">
+		<h1><b>What do you want to do today?</b></h1>
+		
+		<p><a <button type="button" class="btn btn-lg btn-danger" href="/hostSuppr">Host a Suppr </a></button>
+		<a <button type="button" class="btn btn-lg btn-danger" href="/ListingsSupprs.jsp">Join a Suppr</a></button><br>
+		</div>
 		<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log out</a>
-
+ 	</div>
 	<%
 		} 
 		else {
 	%>
-		Enjoy a meal with new people; Share the fun as well as the costs!
-		<p>What is Suppr?  <a href="/about.jsp">Click for info</a> 
-		<p>Log in to view shared meals in your area or host one yourself!    
-		<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Log in</a>
+		<div class="container">
+    <div class="jumbotron">
+        <h1>Welcome to Suppr!</h1>
+        <p class="lead">Enjoy a meal with new people;<br>
+        Share the fun as well as the costs!</p>
+        <p><a class="btn btn-lg btn-success" href="<%= userService.createLoginURL(request.getRequestURI())%>" role="button">Sign up today</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4><a href="/about.jsp">About Suppr</a></h4>
+          <p>Find out more about Suppr and how it works.</p>
+        </div>
+
+        <div class="col-lg-6">
+          <h4><a href="/contact.jsp">Contact</a></h4>
+          <p>Feel free to get in touch with us if you should have any questions or feedback.</p>
+        </div>
+      </div>
+      </div>
 	<%
 		}
 	%>

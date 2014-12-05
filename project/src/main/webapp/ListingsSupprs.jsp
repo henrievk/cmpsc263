@@ -14,11 +14,11 @@
 
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css"/>
 </head>
 
-<body>   
-
+<body>
+<div class="container">   
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -35,17 +35,23 @@
 } else {
 %>
 
-<p>Current Supprs:</p>
-
+<p>Current Supprs:</p><br>
 <%
     for (Entity suppr : supprs) {
-        //String name=suppr.getProperty("title");
         pageContext.setAttribute("name", suppr.getProperty("title"));
+        pageContext.setAttribute("info", suppr.getProperty("description"));
+
 %>
-<p>'${fn:escapeXml(name)}'</p>
+  <div class="list-group">
+  <a href= "/suppr.jsp?supprkey=" + supprkey class="list-group-item active">
+  <h4 class="list-group-item-heading">${fn:escapeXml(name)}</h4>
+  <p class="list-group-item-text">${fn:escapeXml(info)}</p>
+  </a>
+  </div>
 <%
         }
     }
 %>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <html>
-<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css"/>
 <head>
 Suppr
 
@@ -10,6 +10,6 @@ About Suppr - How does it work
 Write stuff
 </p>
 
-<a href="/guestbook.jsp">Back</a> 
+<a href="/">Back</a> 
 </body>
 </html>

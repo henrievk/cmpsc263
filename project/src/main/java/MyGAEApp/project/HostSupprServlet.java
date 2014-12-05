@@ -1,7 +1,9 @@
 package MyGAEApp.project;
 import com.google.appengine.api.datastore.DatastoreService;
+
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
@@ -27,6 +29,7 @@ public class HostSupprServlet extends HttpServlet{
 		    String description = req.getParameter("description");
 		    Date createdAt = new Date();
 		    Entity suppr = new Entity("Suppr", supprkey);
+		    suppr.setProperty("supprkeyy", supprkey);
 		    suppr.setProperty("user", user);
 		    suppr.setProperty("title", title);
 		    suppr.setProperty("description", description);
@@ -34,9 +37,7 @@ public class HostSupprServlet extends HttpServlet{
 
 		    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		    datastore.put(suppr);
-		    System.out.println("Suppr is PUUUUUUUUUUUT"+ suppr.getProperty("title"));
-		    resp.sendRedirect("/hostSuppr");
-
+		    resp.sendRedirect("/suppr.jsp?supprkey=" + supprkey);
 		  }
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
