@@ -34,7 +34,7 @@
      <p>Describe the event. This is a great place to state if there will be entertainment or a dresscode etc.</p>
     <div><textarea name="description" rows="5" cols="60">
     </textarea></div>
-    <div><input type="submit" value="Create Suppr"/></div>
+    <div><input type="submit" value="continue"/></div>
     <input type="hidden" name="title" value="${fn:escapeXml(title)}"/>
 </form>
 

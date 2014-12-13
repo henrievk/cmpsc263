@@ -18,13 +18,15 @@
 </head>
 
 <body>
-<div class="container">   
 <%
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     //TODO: add sort?
     Query query = new Query("Suppr");
+%>
+<div class="container">   
+<%
     List<Entity> supprs = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(30));
     if (supprs.isEmpty()) {
 %>
@@ -38,19 +40,23 @@
 <p>Current Supprs:</p><br>
 <%
     for (Entity suppr : supprs) {
+        pageContext.setAttribute("supprID", suppr.getProperty("supprkey"));
         pageContext.setAttribute("name", suppr.getProperty("title"));
         pageContext.setAttribute("info", suppr.getProperty("description"));
+        System.out.println(suppr.getProperty("supprkey"));
+        //"/suppr.jsp?supprID=${fn:escapeXml(supprkey)}"
 
 %>
   <div class="list-group">
-  <a href= "/suppr.jsp?supprkey=" + supprkey class="list-group-item active">
+  <a href= "/suppr.jsp?supprkey=${fn:escapeXml(supprID)}" class="list-group-item active">
   <h4 class="list-group-item-heading">${fn:escapeXml(name)}</h4>
   <p class="list-group-item-text">${fn:escapeXml(info)}</p>
   </a>
   </div>
+  <p> ${fn:escapeXml(supprID)} </p>
 <%
-        }
-    }
+  }
+}
 %>
 </div>
 </body>
