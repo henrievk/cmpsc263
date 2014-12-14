@@ -32,7 +32,7 @@
 		<div class="jumbotron">
 		<h1><b>What do you want to do today?</b></h1>
 		
-		<p><a <button type="button" class="btn btn-lg btn-danger" href="/hostSuppr">Host a Suppr </a></button>
+		<p><a <button type="button" class="btn btn-lg btn-danger" href="/upload.jsp">Host a Suppr </a></button>
 		<a <button type="button" class="btn btn-lg btn-danger" href="/ListingsSupprs.jsp">Join a Suppr</a></button><br>
 		</div>
 		<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log out</a>

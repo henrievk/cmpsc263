@@ -66,8 +66,6 @@ Something went wrong
 <div class="jumbotron">
         <h2><b>${fn:escapeXml(name)}</b></h2>
         <p>${fn:escapeXml(info)}</p>
-        <p><a <button type="button" class="btn btn-lg btn-danger" href="/upload.jsp">Upload photo</a></button>     
-        <a <button type="button" class="btn btn-lg btn-danger" href="/suppr.jsp?supprID=${fn:escapeXml(supprkey)}">Skip this step</a></button><br>
 </div>
 </div>
 <div class="container">   

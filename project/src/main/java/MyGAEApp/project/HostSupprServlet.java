@@ -31,6 +31,8 @@ public class HostSupprServlet extends HttpServlet{
 		    User user = userService.getCurrentUser();
 		    String title = req.getParameter("title");
 		    String description = req.getParameter("description");
+		    String blobkey=req.getParameter("blobkey");
+		    System.out.println("BLOOOOOB!!!!!!!!" + blobkey +"END OF BLOOOB");
 		    
 		    Date createdAt = new Date();
 		    
@@ -42,6 +44,7 @@ public class HostSupprServlet extends HttpServlet{
 		    suppr.setProperty("title", title);
 		    suppr.setProperty("description", description);
 		    suppr.setProperty("createdAt", createdAt);
+		    suppr.setProperty("image", blobkey);
 
 		    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		    datastore.put(suppr);

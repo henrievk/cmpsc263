@@ -40,6 +40,16 @@
         <url-pattern>/hostSuppr</url-pattern>
     </servlet-mapping>
     
+     <servlet>
+        <servlet-name>upload</servlet-name>
+        <servlet-class>MyGAEApp.project.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>upload</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    
+    
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>

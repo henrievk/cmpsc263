@@ -23,30 +23,31 @@
 <body>   
 
 <%
+    String blobkey = request.getParameter("blob-key");
+    pageContext.setAttribute("blobkey", blobkey);
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 %>
 <div class="container">
 <form action= "/hostSuppr" method="post">
-    <p>Give your Suppr a title!</p>
+    <h2>Step two: Provide necessary information about your Suppr</h2>
+${fn:escapeXml(blobkey)}
+    <h3>Give your Suppr a title!</h3>
     <div><input type="text" name="title" ></div>
-     <p>Describe the event. This is a great place to state if there will be entertainment or a dresscode etc.</p>
-    <div><textarea name="description" rows="5" cols="60">
+     <h3>Describe the event</h3>
+    <div><textarea placeholder="This is a great place to state if there will be entertainment or a dresscode etc." name="description" rows="5" cols="60" >
     </textarea></div>
-    <div><input type="submit" value="continue"/></div>
     <input type="hidden" name="title" value="${fn:escapeXml(title)}"/>
+    <input type="hidden" name="blobkey" value="${fn:escapeXml(blobkey)}"/>
+    <div><input type="submit" value="continue"/></div>
+
 </form>
 
 <%
     BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 %>
 
-<form action="<%= blobstoreService.createUploadUrl("/hostSuppr") %>" method="post" enctype="multipart/form-data">
-            <input type="text" name="foo">
-            <input type="file" name="myFile">
-            <input type="submit" value="Submit">
-        </form>
 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log out</a>
 </div>
 </body>
