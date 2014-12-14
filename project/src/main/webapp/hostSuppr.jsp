@@ -36,7 +36,7 @@ ${fn:escapeXml(blobkey)}
     <h3>Give your Suppr a title!</h3>
     <div><input type="text" name="title" ></div>
      <h3>Describe the event</h3>
-    <div><textarea placeholder="This is a great place to state if there will be entertainment or a dresscode etc." name="description" rows="5" cols="60" >
+    <div><textarea placeholder="This is a great place to state if there will be entertainment or a dresscode etc." name="description">
     </textarea></div>
     <input type="hidden" name="title" value="${fn:escapeXml(title)}"/>
     <input type="hidden" name="blobkey" value="${fn:escapeXml(blobkey)}"/>

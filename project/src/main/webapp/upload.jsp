@@ -15,12 +15,11 @@
     <body>
         <h2>Step 1: Upload an image for your Suppr</h2>
         <form action="<%= blobstoreService.createUploadUrl("/upload") %>" method="post" enctype="multipart/form-data">
-            <input type="text" name="foo">
-            <input type="file" name="myFile"><br>
+            <input type="text" name="foo"><input type="file" name="myFile">
             <input type="submit" value="Next">
         </form>
 
-        <h2>Or skip this step</h2>
+        <h3>(Or skip this step)</h3>
         <a <button type="button" class="btn btn-xs btn-default" href="/hostSuppr?blob-key=none" >Skip</a></button><br>
         </div>
     </body>

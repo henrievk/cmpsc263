@@ -19,6 +19,8 @@
 <%@ page import="com.google.appengine.api.datastore.Query.CompositeFilter" %>
 <%@ page import="com.google.appengine.api.datastore.PreparedQuery" %>
 <%@ page import="com.google.appengine.api.datastore.Query.SortDirection" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="java.util.List" %>
@@ -28,7 +30,37 @@
 <head>
 	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css"/>
 </head>
+<%
+UserService userService = UserServiceFactory.getUserService();
+User user = userService.getCurrentUser();
+%>
 <body>
+   <div class="container">   
+   <nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <div class="navbar-header">
+    </div>
+    <div>
+    <ul class="nav navbar-nav navbar-left">
+        <li><a href="/home"><h4><b>Suppr</b></h4></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
+        <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
 <%
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     String supprName = request.getParameter("supprkey");
@@ -44,9 +76,12 @@ Something went wrong
     Filter propertyFilter =new FilterPredicate("supprkey", FilterOperator.EQUAL, supprName);
     Query q = new Query("Suppr").setFilter(propertyFilter);
     List<Entity> supprs = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(30));
+    String bk;
     for (Entity suppr : supprs) {
         pageContext.setAttribute("name", suppr.getProperty("title"));
         pageContext.setAttribute("info", suppr.getProperty("description"));
+        pageContext.setAttribute("blobkey", suppr.getProperty("image"));
+        bk = suppr.getProperty("image").toString();
     }
 
     //Key    supprKey = KeyFactory.stringToKey(supprName);
@@ -64,6 +99,7 @@ Something went wrong
 <div class="container">   
 
 <div class="jumbotron">
+        <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" />
         <h2><b>${fn:escapeXml(name)}</b></h2>
         <p>${fn:escapeXml(info)}</p>
 </div>
@@ -72,6 +108,7 @@ Something went wrong
 </div>
 
 <div class="jumbotron">
+        <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" />
         <h2><b>${fn:escapeXml(name)}</b></h2>
         <p>${fn:escapeXml(info)}</p>
         <a <button type="button" class="btn btn-lg btn-danger" href="/join">joinfixthis</a></button><br>

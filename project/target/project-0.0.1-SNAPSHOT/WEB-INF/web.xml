@@ -49,6 +49,14 @@
         <url-pattern>/upload</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>serve</servlet-name>
+        <servlet-class>MyGAEApp.project.Serve</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>serve</servlet-name>
+        <url-pattern>/serve</url-pattern>
+    </servlet-mapping>
     
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
