@@ -34,32 +34,34 @@
 UserService userService = UserServiceFactory.getUserService();
 %>
 <body>
-   <div class="container">   
-   <nav class="navbar navbar-default" role="navigation">
+<div class="container">   
+<nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
+    <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-  </div>
+    </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <div class="navbar-header">
-    </div>
-    <div>
-    <ul class="nav navbar-nav navbar-left">
-        <li><a href="/home"><h4><b>Suppr</b></h4></a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-    	<li><a href="/mySupprs.jsp">My Supprs</a></li>
-        <li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
-        <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
-    </ul>
-  </div><!-- /.navbar-collapse -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <div class="navbar-header">
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="/home"><h4><b>Suppr</b></h4></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="/mySupprs.jsp">My Supprs</a></li>
+        <li><a href="#">Recipies</a></li>
+          <li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
+          <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
+        </ul>
+      </div>
+    </div><!-- /.navbar-collapse -->
 </nav>
 <%
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -80,29 +82,24 @@ You are not logged in
         pageContext.setAttribute("info", suppr.getProperty("description"));
         pageContext.setAttribute("blobkey", suppr.getProperty("image"));
         bk = suppr.getProperty("image").toString();
-
-%>
-
-<div class="container">   
-
+%> 
 <div class="jumbotron">
-<div class="row">
-        <div class="col-md-6">
-          <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" class="img-thumbnail"/>
-        </div>
-        <div class="col-md-7">
-          <h2><b>${fn:escapeXml(name)}</b></h2>
-          <p>${fn:escapeXml(info)}</p>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-6">
+      <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" class="img-thumbnail"/>
+    </div>
+    <div class="col-md-7">
+      <h2><b>${fn:escapeXml(name)}</b></h2>
+      <p>${fn:escapeXml(info)}</p>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
+
 
 <% 
 }
 }  
 %>
+</div>
 </body>
 </html>

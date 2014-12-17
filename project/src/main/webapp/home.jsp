@@ -20,15 +20,43 @@
 	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css"/>
 	<title>Suppr</title>
 </head>
-
+<%
+UserService userService = UserServiceFactory.getUserService();
+%>
 <body>
+<div class="container">   
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  	<div class="navbar-header">
+  	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  	</div>
 
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  	<div class="collapse navbar-collapse navbar-ex1-collapse">
+    	<div class="navbar-header">
+    	</div>
+    	<div>
+    		<ul class="nav navbar-nav navbar-left">
+        	<li><a href="/home"><h4><b>Suppr</b></h4></a></li>
+    		</ul>
+    		<ul class="nav navbar-nav navbar-right">
+    		<li><a href="/mySupprs.jsp">My Supprs</a></li>
+    		<li><a href="#">Recipies</a></li>
+        	<li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
+        	<li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
+    		</ul>
+  		</div>
+  	</div><!-- /.navbar-collapse -->
+</nav>
 	<%
-		UserService userService = UserServiceFactory.getUserService();
 	User currentUser = userService.getCurrentUser();
 	if (currentUser != null) {
 	%>
-	<div class="container">
 		<div class="jumbotron">
 		<h1><b>What do you want to do today?</b></h1>
 		
@@ -46,7 +74,7 @@
         <h1>Welcome to Suppr!</h1>
         <p class="lead">Enjoy a meal with new people;<br>
         Share the fun as well as the costs!</p>
-        <p><a class="btn btn-lg btn-success" href="<%= userService.createLoginURL(request.getRequestURI())%>" role="button">Sign up today</a></p>
+        <p><a class="btn btn-lg btn-danger" href="<%= userService.createLoginURL(request.getRequestURI())%>" role="button">Sign up today</a></p>
       </div>
 
       <div class="row marketing">
