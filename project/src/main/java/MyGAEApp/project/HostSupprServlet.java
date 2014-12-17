@@ -26,13 +26,10 @@ import javax.servlet.http.HttpServletResponse;
 public class HostSupprServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 		      throws IOException, ServletException {
-		    UserService userService = UserServiceFactory.getUserService();
-		    
-		    User user = userService.getCurrentUser();
+		    String user = req.getParameter("user");
 		    String title = req.getParameter("title");
 		    String description = req.getParameter("description");
 		    String blobkey=req.getParameter("blobkey");
-		    System.out.println("BLOOOOOB!!!!!!!!" + blobkey +"END OF BLOOOB");
 		    
 		    Date createdAt = new Date();
 		    
@@ -45,18 +42,11 @@ public class HostSupprServlet extends HttpServlet{
 		    suppr.setProperty("description", description);
 		    suppr.setProperty("createdAt", createdAt);
 		    suppr.setProperty("image", blobkey);
-
 		    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		    datastore.put(suppr);
 		    String SupprKeyStr = KeyFactory.keyToString(supprkey);
 		    resp.sendRedirect("/suppr.jsp?supprkey=" + SupprKeyStr);
 		  }
-	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException, ServletException {
-		resp.setContentType("text/plain");
-		req.getRequestDispatcher("hostSuppr.jsp").forward(req, resp);
-		}
 
 	
 }

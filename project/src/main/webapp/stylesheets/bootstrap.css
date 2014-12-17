@@ -971,8 +971,8 @@ img {
 }
 .img-thumbnail {
   display: inline-block;
-  max-width: 100%;
-  height: auto;
+  max-width: 200px;
+  height: 200px;
   padding: 4px;
   line-height: 1.42857143;
   background-color: #fff;
@@ -1447,7 +1447,7 @@ pre code {
   padding-right: 15px;
   padding-left: 15px;
 }
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-md-6, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
 .col-xs-12 {
@@ -1781,10 +1781,10 @@ pre code {
     width: 66.66666667%;
   }
   .col-md-7 {
-    width: 58.33333333%;
+    width: 80%;
   }
   .col-md-6 {
-    width: 50%;
+    width: 20%;
   }
   .col-md-5 {
     width: 41.66666667%;
@@ -4645,7 +4645,7 @@ a.badge:focus {
 }
 .jumbotron {
   text-align: center;
-  padding: 30px 15px;
+  padding: 10px 15px;
   margin-bottom: 30px;
   color: inherit;
   background-color: #fdf2f3;

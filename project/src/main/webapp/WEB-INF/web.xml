@@ -50,6 +50,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>enqueue</servlet-name>
+        <servlet-class>MyGAEApp.project.Enqueue</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>enqueue</servlet-name>
+        <url-pattern>/enqueue</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>serve</servlet-name>
         <servlet-class>MyGAEApp.project.Serve</servlet-class>
     </servlet>

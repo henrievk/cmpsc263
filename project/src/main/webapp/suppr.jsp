@@ -83,36 +83,29 @@ Something went wrong
         pageContext.setAttribute("blobkey", suppr.getProperty("image"));
         bk = suppr.getProperty("image").toString();
     }
-
-    //Key    supprKey = KeyFactory.stringToKey(supprName);
-    //Entity suppr    = datastore.get(supprKey);
-    //pageContext.setAttribute("name", suppr.getProperty("title"));
-    //pageContext.setAttribute("info", suppr.getProperty("description"));
-
-
-    //if (supprs.isEmpty()) {
-    //Filter propertyFilter =new FilterPredicate("supprkey", FilterOperator.EQUAL, supprName);
-    //Query q = new Query("Suppr").setFilter(propertyFilter);
-    //List<Entity> supprs = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(30));
 %>
 
 <div class="container">   
 
 <div class="jumbotron">
-        <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" />
-        <h2><b>${fn:escapeXml(name)}</b></h2>
-        <p>${fn:escapeXml(info)}</p>
-</div>
-</div>
-<div class="container">   
+<div class="row">
+        <div class="col-md-6">
+          <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" class="img-thumbnail"/>
+        </div>
+        <div class="col-md-7">
+          <h2><b>${fn:escapeXml(name)}</b></h2>
+          <p>${fn:escapeXml(info)}</p>
+        </div>
+      </div>
 </div>
 
 <div class="jumbotron">
-        <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" />
+        <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" class="img-thumbnail"/>
         <h2><b>${fn:escapeXml(name)}</b></h2>
         <p>${fn:escapeXml(info)}</p>
         <a <button type="button" class="btn btn-lg btn-danger" href="/join">joinfixthis</a></button><br>
         </div>
+</div>
 </div>
 
 <% 

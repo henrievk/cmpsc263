@@ -26,9 +26,9 @@ public class UploadServlet extends HttpServlet{
         BlobKey blobKey = blobs.get("myFile");
 
         if (blobKey == null) {
-            res.sendRedirect("/");
+        	res.sendRedirect("/hostSuppr.jsp?blob-key=none");
         } else {
-            res.sendRedirect("/hostSuppr?blob-key=" + blobKey.getKeyString());
+            res.sendRedirect("/hostSuppr.jsp?blob-key=" + blobKey.getKeyString());
         }
     }
 }

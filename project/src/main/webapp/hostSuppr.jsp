@@ -28,25 +28,25 @@
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    String userStr= user.toString();
+    pageContext.setAttribute("user", userStr);
 %>
 <div class="container">
-<form action= "/hostSuppr" method="post">
+<div class="jumbotron">
+<form action= "/enqueue" method="post">
     <h2>Step two: Provide necessary information about your Suppr</h2>
-${fn:escapeXml(blobkey)}
     <h3>Give your Suppr a title!</h3>
     <div><input type="text" name="title" ></div>
      <h3>Describe the event</h3>
-    <div><textarea placeholder="This is a great place to state if there will be entertainment or a dresscode etc." name="description">
+    <div><textarea rows="5" cols= "60" placeholder="This is a great place to state if there will be entertainment or a dresscode etc." name="description">
     </textarea></div>
     <input type="hidden" name="title" value="${fn:escapeXml(title)}"/>
     <input type="hidden" name="blobkey" value="${fn:escapeXml(blobkey)}"/>
+    <input type="hidden" name="user" value="${fn:escapeXml(user)}"/>
     <div><input type="submit" value="continue"/></div>
 
 </form>
-
-<%
-    BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-%>
+</div>
 
 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Log out</a>
 </div>

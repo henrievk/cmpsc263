@@ -13,15 +13,18 @@
     </head>
     <div class="container">
     <body>
+    <div class="jumbotron">
         <h2>Step 1: Upload an image for your Suppr</h2>
         <form action="<%= blobstoreService.createUploadUrl("/upload") %>" method="post" enctype="multipart/form-data">
-            <input type="text" name="foo"><input type="file" name="myFile">
+            <input type="text" name="foo" style="padding-left: 100px;"><input type="file" name="myFile"style="float: right; padding-right: 100px;">
             <input type="submit" value="Next">
         </form>
 
         <h3>(Or skip this step)</h3>
-        <a <button type="button" class="btn btn-xs btn-default" href="/hostSuppr?blob-key=none" >Skip</a></button><br>
-        </div>
+        <form action="/hostSuppr.jsp?blob-key=none">
+            <input type="submit" value="Skip">
+        </form>
+    </div>
     </body>
     </div>
 </html>

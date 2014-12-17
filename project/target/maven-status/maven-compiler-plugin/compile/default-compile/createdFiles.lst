@@ -1,8 +1,8 @@
 MyGAEApp/project/UploadServlet.class
 MyGAEApp/project/GuestbookServlet.class
 MyGAEApp/project/AboutServlet.class
-MyGAEApp/project/HomeServlet.class
 MyGAEApp/project/Serve.class
+MyGAEApp/project/HomeServlet.class
 MyGAEApp/project/SupprServlet.class
-MyGAEApp/project/HostSupprServlet.class
 MyGAEApp/project/SignGuestbookServlet.class
+MyGAEApp/project/HostSupprServlet.class
