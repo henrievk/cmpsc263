@@ -6,6 +6,13 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <%@ page import="com.google.appengine.api.datastore.Query" %>
+<%@ page import="com.google.appengine.api.datastore.Query.Filter" %>
+<%@ page import="com.google.appengine.api.datastore.Query.FilterOperator" %>
+<%@ page import="com.google.appengine.api.datastore.Query.FilterPredicate" %>
+<%@ page import="com.google.appengine.api.datastore.Query.CompositeFilterOperator" %>
+<%@ page import="com.google.appengine.api.datastore.Query.CompositeFilter" %>
+<%@ page import="com.google.appengine.api.datastore.PreparedQuery" %>
+<%@ page import="com.google.appengine.api.datastore.Query.SortDirection" %>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -42,8 +49,8 @@ UserService userService = UserServiceFactory.getUserService();
         </ul>
         <ul class="nav navbar-nav navbar-right">
         <li><a href="/mySupprs.jsp">My Supprs</a></li>
-        <li><a href="#">Recipies</a></li>
-          <li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
+        <li><a href="recipies.jsp">Recipies</a></li>
+          <li><a href="/ListingsSupprs.jsp">Suppr listings</a></li>
           <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
         </ul>
       </div>
@@ -53,7 +60,7 @@ UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     //TODO: add sort?
-    Query query = new Query("Suppr");
+    Query query = new Query("Suppr").addSort("createdAt", SortDirection.DESCENDING);
 %> 
 <%
     List<Entity> supprs = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(30));
@@ -72,9 +79,6 @@ UserService userService = UserServiceFactory.getUserService();
         pageContext.setAttribute("supprID", suppr.getProperty("supprkey"));
         pageContext.setAttribute("name", suppr.getProperty("title"));
         pageContext.setAttribute("info", suppr.getProperty("description"));
-        System.out.println(suppr.getProperty("supprkey"));
-        //"/suppr.jsp?supprID=${fn:escapeXml(supprkey)}"
-
 %>
   <div class="list-group">
   <a href= "/suppr.jsp?supprkey=${fn:escapeXml(supprID)}" class="list-group-item active">
@@ -82,7 +86,6 @@ UserService userService = UserServiceFactory.getUserService();
   <p class="list-group-item-text">${fn:escapeXml(info)}</p>
   </a>
   </div>
-  <p> ${fn:escapeXml(supprID)} </p>
 <%
   }
 }

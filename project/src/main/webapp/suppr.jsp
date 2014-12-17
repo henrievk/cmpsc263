@@ -57,8 +57,8 @@ User user = userService.getCurrentUser();
         </ul>
         <ul class="nav navbar-nav navbar-right">
         <li><a href="/mySupprs.jsp">My Supprs</a></li>
-        <li><a href="#">Recipies</a></li>
-          <li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
+        <li><a href="recipies.jsp">Recipies</a></li>
+          <li><a href="/ListingsSupprs.jsp">Suppr listings</a></li>
           <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
         </ul>
       </div>
@@ -68,8 +68,6 @@ User user = userService.getCurrentUser();
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     String supprName = request.getParameter("supprkey");
     pageContext.setAttribute("supprkey", supprName);
-    System.out.println(supprName);
-    //System.out.println("supprname from supprID" +supprName +" OR URL: " + url);
     if (supprName == null) {
 %>
 Something went wrong
@@ -84,7 +82,9 @@ Something went wrong
         pageContext.setAttribute("name", suppr.getProperty("title"));
         pageContext.setAttribute("info", suppr.getProperty("description"));
         pageContext.setAttribute("blobkey", suppr.getProperty("image"));
-        bk = suppr.getProperty("image").toString();
+        pageContext.setAttribute("location", suppr.getProperty("location"));
+        pageContext.setAttribute("contact", suppr.getProperty("contact"));
+        pageContext.setAttribute("host", suppr.getProperty("host"));
     }
 %>
 
@@ -96,8 +96,10 @@ Something went wrong
           <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" class="img-thumbnail"/>
         </div>
         <div class="col-md-7">
-          <h2><b>${fn:escapeXml(name)}</b></h2>
+          <h2><b>What: ${fn:escapeXml(name)}</b></h2>
+          <p>Where: ${fn:escapeXml(location)}</p>
           <p>${fn:escapeXml(info)}</p>
+          <p>Request to join by messaging: ${fn:escapeXml(contact)}</p>
         </div>
       </div>
 </div>

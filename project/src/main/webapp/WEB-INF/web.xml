@@ -67,6 +67,15 @@
         <url-pattern>/serve</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>recipe</servlet-name>
+        <servlet-class>MyGAEApp.project.RecipeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>recipe</servlet-name>
+        <url-pattern>/recipe</url-pattern>
+    </servlet-mapping>
+    
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>

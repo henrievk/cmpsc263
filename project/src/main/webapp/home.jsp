@@ -46,8 +46,8 @@ UserService userService = UserServiceFactory.getUserService();
     		</ul>
     		<ul class="nav navbar-nav navbar-right">
     		<li><a href="/mySupprs.jsp">My Supprs</a></li>
-    		<li><a href="#">Recipies</a></li>
-        	<li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
+    		<li><a href="recipies.jsp">Recipies</a></li>
+        	<li><a href="/ListingsSupprs.jsp">Suppr listings</a></li>
         	<li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
     		</ul>
   		</div>
@@ -69,7 +69,6 @@ UserService userService = UserServiceFactory.getUserService();
 		} 
 		else {
 	%>
-		<div class="container">
     <div class="jumbotron">
         <h1>Welcome to Suppr!</h1>
         <p class="lead">Enjoy a meal with new people;<br>

@@ -45,8 +45,8 @@ UserService userService = UserServiceFactory.getUserService();
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <li><a href="/mySupprs.jsp">My Supprs</a></li>
-            <li><a href="#">Recipies</a></li>
-            <li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
+            <li><a href="recipies.jsp">Recipies</a></li>
+            <li><a href="/ListingsSupprs.jsp">Suppr listings</a></li>
             <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
             </ul>
         </div>
@@ -64,7 +64,9 @@ UserService userService = UserServiceFactory.getUserService();
 <form action= "/enqueue" method="post">
     <h2>Step 2: Provide necessary information about your Suppr</h2>
     <h3>Give your Suppr a title!</h3>
-    <div><input type="text" name="title" ></div>
+    <div><input type="text" name="title" placeholder="Title"><br></div>
+    <div><input type="text" name="location" placeholder="Location"><br></div>
+    <div><input type="text" name="contact" placeholder="Contact information"><br></div>
      <h3>Describe the event</h3>
     <div><textarea rows="5" cols="60" placeholder="This is a great place to state if there will be entertainment or a dresscode etc." name="description"></textarea></div>
     <input type="hidden" name="title" value="${fn:escapeXml(title)}"/>

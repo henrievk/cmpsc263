@@ -18,10 +18,12 @@ public class Enqueue extends HttpServlet{
 		String title = req.getParameter("title");
 	    String description = req.getParameter("description");
 	    String blobkey=req.getParameter("blobkey");
+	    String contact=req.getParameter("contact");
+	    String location=req.getParameter("location");
 	    String user = req.getParameter("user");
 	    
 	    Queue queue = QueueFactory.getDefaultQueue();
-	    queue.add(withUrl("/hostSuppr").param("title", title).param("description", description).param("blobkey", blobkey).param("user", user));
+	    queue.add(withUrl("/hostSuppr").param("title", title).param("description", description).param("blobkey", blobkey).param("user", user).param("contact", contact).param("location", location));
 
 	    res.sendRedirect("/created.jsp");
 	 }

@@ -28,9 +28,11 @@ public class HostSupprServlet extends HttpServlet{
 		      throws IOException, ServletException {
 		    String user = req.getParameter("user");
 		    String title = req.getParameter("title");
+		    String location = req.getParameter("location");
+		    String contact = req.getParameter("contact");
 		    String description = req.getParameter("description");
 		    String blobkey=req.getParameter("blobkey");
-		    
+		    System.out.println("ÅÅÅÅÅÅÅÅ"+user + title + location + contact + description + blobkey);
 		    Date createdAt = new Date();
 		    
 		    Key supprkey = KeyFactory.createKey("Suppr", title);
@@ -39,6 +41,8 @@ public class HostSupprServlet extends HttpServlet{
 		    suppr.setProperty("supprkey", KeyFactory.keyToString(supprkey));
 		    suppr.setProperty("user", user);
 		    suppr.setProperty("title", title);
+		    suppr.setProperty("location", location);
+		    suppr.setProperty("contact", contact);
 		    suppr.setProperty("description", description);
 		    suppr.setProperty("createdAt", createdAt);
 		    suppr.setProperty("image", blobkey);

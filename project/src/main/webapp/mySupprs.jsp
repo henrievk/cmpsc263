@@ -56,8 +56,8 @@ UserService userService = UserServiceFactory.getUserService();
         </ul>
         <ul class="nav navbar-nav navbar-right">
         <li><a href="/mySupprs.jsp">My Supprs</a></li>
-        <li><a href="#">Recipies</a></li>
-          <li><a href="/ListingsSuppr.jsp">Suppr listings</a></li>
+        <li><a href="recipies.jsp">Recipies</a></li>
+          <li><a href="/ListingsSupprs.jsp">Suppr listings</a></li>
           <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Logout</a></li> 
         </ul>
       </div>
@@ -74,11 +74,12 @@ You are not logged in
     else{
     String user = currentUser.toString();
     Filter propertyFilter =new FilterPredicate("user", FilterOperator.EQUAL, user);
-    Query q = new Query("Suppr").setFilter(propertyFilter).addSort("createdAt", SortDirection.DESCENDING);;
+    Query q = new Query("Suppr").setFilter(propertyFilter).addSort("createdAt", SortDirection.DESCENDING);
     List<Entity> supprs = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(30));
     String bk;
     for (Entity suppr : supprs) {
         pageContext.setAttribute("name", suppr.getProperty("title"));
+        pageContext.setAttribute("location", suppr.getProperty("location"));
         pageContext.setAttribute("info", suppr.getProperty("description"));
         pageContext.setAttribute("blobkey", suppr.getProperty("image"));
         bk = suppr.getProperty("image").toString();
@@ -90,6 +91,7 @@ You are not logged in
     </div>
     <div class="col-md-7">
       <h2><b>${fn:escapeXml(name)}</b></h2>
+      <p>${fn:escapeXml(location)}</p>
       <p>${fn:escapeXml(info)}</p>
     </div>
   </div>
