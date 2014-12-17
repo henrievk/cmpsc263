@@ -1,0 +1,73 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
+ 
+import com.google.gson.*;
+ 
+/**
+ * Hello world!
+ *
+ */
+public class App
+{
+       
+        public class Response{
+                ArrayList<Recipe> recipes;
+                public Response(){
+                       
+                }
+        }
+       
+        public class Recipe{
+                public String publisher;
+                public String f2f_url;
+                public String title;
+                public String source_url;
+                public String recipe_id;
+                public String image_url;
+                public String social_rank;
+                public String publisher_url;
+               
+                public Recipe(){
+                       
+                }
+               
+               
+                public String toString(){
+                        return this.title;
+                }
+               
+        }
+       
+    public static void main( String[] args ) throws Exception
+    {  
+        Gson gson = new Gson();
+        String json = App.getJsonFromAPI();
+        Response response = gson.fromJson(json, Response.class);
+       
+       
+        System.out.println(response.recipes);
+       
+    }
+ 
+ 
+   public static String getJsonFromAPI() throws Exception{
+          BufferedReader reader = null;
+          try {
+                URL url = new URL("http://food2fork.com/api/search?key=02494a85beaa104a5de8ab8546d094cb&q=chicken");
+        reader = new BufferedReader(new InputStreamReader(url.openStream()));
+        StringBuffer buffer = new StringBuffer();
+        int read;
+ 
+        char[] chars = new char[1024];
+        while ((read = reader.read(chars)) != -1)
+            buffer.append(chars, 0, read);
+        return buffer.toString();
+          }
+      finally {
+          if (reader != null) reader.close();
+      }
+   }
+ 
+}

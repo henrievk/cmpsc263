@@ -49,7 +49,6 @@ public class HostSupprServlet extends HttpServlet{
 		    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		    datastore.put(suppr);
 		    String SupprKeyStr = KeyFactory.keyToString(supprkey);
-		    resp.sendRedirect("/suppr.jsp?supprkey=" + SupprKeyStr);
 		  }
 
 	

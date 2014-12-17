@@ -87,9 +87,6 @@ Something went wrong
         pageContext.setAttribute("host", suppr.getProperty("host"));
     }
 %>
-
-<div class="container">   
-
 <div class="jumbotron">
 <div class="row">
         <div class="col-md-6">
@@ -103,13 +100,6 @@ Something went wrong
         </div>
       </div>
 </div>
-
-<div class="jumbotron">
-        <img src="/serve?blobkey=${fn:escapeXml(blobkey)}" class="img-thumbnail"/>
-        <h2><b>${fn:escapeXml(name)}</b></h2>
-        <p>${fn:escapeXml(info)}</p>
-        <a <button type="button" class="btn btn-lg btn-danger" href="/join">joinfixthis</a></button><br>
-        </div>
 </div>
 </div>
 
